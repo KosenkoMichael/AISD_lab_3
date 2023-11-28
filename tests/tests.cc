@@ -4,50 +4,16 @@
 using namespace std;
 using namespace algorithm;
 
-TEST(bubble_sort, test_1) {
-	vector<int> mass;
-	for (int i = 100; i > 0; i--) {
-		mass.push_back(i);
-	}
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i]<<" ";
-	}
-	stats stat = bubble_sort(mass);
-	cout << "\n";
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i] << " ";
-	}
-	cout << "\n\n" << stat.comparison_count << " " << stat.copy_count;
-}
+TEST(sorts, test) {
+	//fill_file(bubble_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_bubble_sort.txt");
+	//fill_file(shaker_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_shaker_sort.txt");
+	//fill_file(comb_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_comb_sort.txt");
 
-TEST(shaker_sort, test_1) {
-	vector<int> mass;
-	for (int i = 100; i > 0; i--) {
-		mass.push_back(i);
-	}
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i] << " ";
-	}
-	stats stat = shaker_sort(mass);
-	cout << "\n";
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i] << " ";
-	}
-	cout << "\n\n" << stat.comparison_count << " " << stat.copy_count;
-}
+	//cout << test_sort(bubble_sort<int>, 100000, 1, 0) << endl;
+	//cout << test_sort(shaker_sort<int>, 100000, 1, 0) << endl;
+	//cout << test_sort(comb_sort<int>, 100000, 1, 0) << endl;
 
-TEST(comb_sort, test_1) {
-	vector<int> mass;
-	for (int i = 100; i > 0; i--) {
-		mass.push_back(i);
-	}
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i] << " ";
-	}
-	stats stat = comb_sort(mass);
-	cout << "\n";
-	for (int i = 0; i < 100; i++) {
-		cout << mass[i] << " ";
-	}
-	cout << "\n\n" << stat.comparison_count << " " << stat.copy_count;
+	cout << test_sort(bubble_sort<int>, 100000, 1, 1) << endl;
+	cout << test_sort(shaker_sort<int>, 100000, 1, 1) << endl;
+	cout << test_sort(comb_sort<int>, 100000, 1, 1) << endl;
 }

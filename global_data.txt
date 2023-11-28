@@ -1,0 +1,10 @@
+bubble_sort best: 705082704 0
+	    worst: 705082704 705082704
+shaker_sort best: 200000 0
+	    worst: 705082704 705082704
+comb_sort   best: 4295839 0
+	    worst: 4295839 232518
+
+
+
+
