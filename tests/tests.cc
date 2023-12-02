@@ -13,7 +13,17 @@ TEST(sorts, test) {
 	//cout << test_sort(shaker_sort<int>, 100000, 1, 0) << endl;
 	//cout << test_sort(comb_sort<int>, 100000, 1, 0) << endl;
 
-	cout << test_sort(bubble_sort<int>, 100000, 1, 1) << endl;
-	cout << test_sort(shaker_sort<int>, 100000, 1, 1) << endl;
-	cout << test_sort(comb_sort<int>, 100000, 1, 1) << endl;
+	//cout << test_sort(bubble_sort<int>, 100000, 1, 1) << endl;
+	//cout << test_sort(shaker_sort<int>, 100000, 1, 1) << endl;
+	//cout << test_sort(comb_sort<int>, 100000, 1, 1) << endl;
+
+	/*vector<string> mass = { "b","a", "e", "d", "f", "c", "i", "h", "g", "j" };
+	cout << mass<<endl;
+	comb_sort(mass);
+	cout << mass << endl;*/
+
+	/*vector<Banana> mass = { {12, true}, {5, false},{30, false} };
+	cout << mass << endl;
+	comb_sort<Banana>(mass);
+	cout << mass << endl;*/
 }

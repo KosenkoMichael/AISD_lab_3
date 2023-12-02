@@ -3,9 +3,44 @@
 #include<iostream>
 #include<random>
 #include<fstream>
+#include<string>
 using namespace std;
 
 namespace algorithm {
+	class Banana {
+	private:
+		float _len;
+		bool _taste;
+	public:
+		Banana(float len, bool taste) : _len(len), _taste(taste) {};
+		float len() const{
+			return _len;
+		}
+		bool taste() const{
+			return _taste;
+		}
+	};
+	bool operator> (const Banana& left, const Banana& right) {
+		if (left.taste() == right.taste())
+			return left.len() > right.len();
+		else return left.taste();
+	}
+	bool operator< (const Banana left, const Banana right) {
+		if (left.taste() == right.taste())
+			return left.len() < right.len();
+		else return right.taste();
+	}
+	ostream& operator<<(ostream& stream, const Banana& cur) {
+		stream << cur.len() << " " << cur.taste() << " ";
+		return stream;
+	}
+	bool operator>(const std::string& str1, const std::string& str2) {
+		return str1.compare(str2) > 0;
+	}
+
+	bool operator<(const std::string& str1, const std::string& str2) {
+		return str1.compare(str2) < 0;
+	}
 	int generate_random_number(int min, int max) {
 		random_device rd;
 		mt19937 mt(rd());
@@ -30,7 +65,7 @@ namespace algorithm {
 	template<typename T>
 	ostream& operator<<(ostream& stream, vector<T> val) {
 		for (int i = 0; i < val.size(); i++) {
-			stream << val[i];
+			stream << val[i] << " ";
 		}
 		return stream;
 	}
@@ -56,7 +91,7 @@ namespace algorithm {
 		vector<int> vals = { 1,2,3,4,5,6,7,8,9,10,25,50,100 };
 		if (file) {
 			for (int i = 0; i < vals.size(); i++) {
-				cout << vals[i] * 1000<<endl;
+				cout << vals[i] * 1000 << endl;
 				vector<stats> res = test_sort(func, vals[i] * 1000, 100, 2);
 				file << vals[i] * 1000 << " ";
 				file << average(res);
@@ -73,7 +108,7 @@ namespace algorithm {
 		/// test_sort(sort_function: *func(type of sort funtion), limit: int(mass_len), count: int(mass_count),
 		//sorted_type(0 - sort; 1 - unsorted; 2 - random_shuffle): int) -> vector<stats>
 		vector<stats> results;
-		for (int i = 0; i <= count-1; i++) {
+		for (int i = 0; i <= count - 1; i++) {
 			vector<int> mass;
 			switch (mass_type)
 			{
@@ -84,12 +119,12 @@ namespace algorithm {
 				break;
 			case 1:
 				for (int j = 0; j <= limit; j++) {
-					mass.push_back(limit-j);
+					mass.push_back(limit - j);
 				}
 				break;
 			case 2:
 				for (int j = 0; j <= limit; j++) {
-					mass.push_back(generate_random_number(1,100));
+					mass.push_back(generate_random_number(1, 100));
 				}
 				break;
 			}
