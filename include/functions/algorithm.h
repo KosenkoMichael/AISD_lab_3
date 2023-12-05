@@ -85,14 +85,14 @@ namespace algorithm {
 	}
 
 	template<typename T>
-	void fill_file(stats func(vector<T>&), string path) {
+	void fill_file(stats func(vector<T>&), string path, int count, int sort_type) {
 		fstream file;
-		file.open(path/*, std::ios::app*/);
+		file.open(path, std::ios::app);
 		vector<int> vals = { 1,2,3,4,5,6,7,8,9,10,25,50,100 };
 		if (file) {
 			for (int i = 0; i < vals.size(); i++) {
-				cout << vals[i] * 1000 << endl;
-				vector<stats> res = test_sort(func, vals[i] * 1000, 100, 2);
+				/*cout << vals[i] * 1000 << endl;*/
+				vector<stats> res = test_sort(func, vals[i] * 1000, count, sort_type);
 				file << vals[i] * 1000 << " ";
 				file << average(res);
 			}
@@ -113,21 +113,22 @@ namespace algorithm {
 			switch (mass_type)
 			{
 			case 0:
-				for (int j = 0; j <= limit; j++) {
+				for (int j = 0; j < limit; j++) {
 					mass.push_back(j);
 				}
 				break;
 			case 1:
-				for (int j = 0; j <= limit; j++) {
+				for (int j = 0; j < limit; j++) {
 					mass.push_back(limit - j);
 				}
 				break;
 			case 2:
-				for (int j = 0; j <= limit; j++) {
+				for (int j = 0; j < limit; j++) {
 					mass.push_back(generate_random_number(1, 100));
 				}
 				break;
 			}
+			cout << mass.size()<<endl;
 			results.push_back(func(mass));
 		}
 		return results;

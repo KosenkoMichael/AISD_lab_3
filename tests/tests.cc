@@ -5,18 +5,18 @@ using namespace std;
 using namespace algorithm;
 
 TEST(sorts, test) {
-	//fill_file(bubble_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_bubble_sort.txt");
-	//fill_file(shaker_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_shaker_sort.txt");
-	//fill_file(comb_sort<int>, "C:\\Users\\79379\\Desktop\\aisd_lab_3\\graphics_data_comb_sort.txt");
+	 
+	fill_file(shaker_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\rand_data_shaker_sort.txt", 100, 2);
+	fill_file(comb_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\rand_data_comb_sort.txt", 100, 2);
+	fill_file(bubble_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\rand_data_bubble_sort.txt", 100, 2);
+	/*fill_file(bubble_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\unsorted_bubble.txt", 1, 1);
+	fill_file(shaker_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\unsorted_shaker.txt", 1, 1);
+	fill_file(comb_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\unsorted_comb.txt", 1, 1);
 
-	//cout << test_sort(bubble_sort<int>, 100000, 1, 0) << endl;
-	//cout << test_sort(shaker_sort<int>, 100000, 1, 0) << endl;
-	//cout << test_sort(comb_sort<int>, 100000, 1, 0) << endl;
-
-	//cout << test_sort(bubble_sort<int>, 100000, 1, 1) << endl;
-	//cout << test_sort(shaker_sort<int>, 100000, 1, 1) << endl;
-	//cout << test_sort(comb_sort<int>, 100000, 1, 1) << endl;
-
+	fill_file(bubble_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\sorted_bubble.txt", 1, 0);
+	fill_file(shaker_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\sorted_shaker.txt", 1, 0);
+	fill_file(comb_sort<int>, "C:\\Users\\79379\\Desktop\\AISD_lab_3\\sorted_comb.txt", 1, 0);*/
+	
 	/*vector<string> mass = { "b","a", "e", "d", "f", "c", "i", "h", "g", "j" };
 	cout << mass<<endl;
 	comb_sort(mass);
