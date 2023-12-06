@@ -27,6 +27,7 @@ def out(path):
 
     plt.show()
 
+
 out('bubble')
 out('shaker')
 out('comb')

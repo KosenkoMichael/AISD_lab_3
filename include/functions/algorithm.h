@@ -4,6 +4,7 @@
 #include<random>
 #include<fstream>
 #include<string>
+#include<iomanip>
 using namespace std;
 
 namespace algorithm {
@@ -41,9 +42,8 @@ namespace algorithm {
 	bool operator<(const std::string& str1, const std::string& str2) {
 		return str1.compare(str2) < 0;
 	}
-	int generate_random_number(int min, int max) {
-		random_device rd;
-		mt19937 mt(rd());
+	int generate_random_number(int min, int max, int seed) {
+		mt19937 mt(seed);
 		uniform_int_distribution<int> distribution(min, max);
 		return distribution(mt);
 	}
@@ -65,7 +65,7 @@ namespace algorithm {
 	template<typename T>
 	ostream& operator<<(ostream& stream, vector<T> val) {
 		for (int i = 0; i < val.size(); i++) {
-			stream << val[i] << " ";
+			stream << setw(3) << val[i] << " ";
 		}
 		return stream;
 	}
@@ -85,14 +85,14 @@ namespace algorithm {
 	}
 
 	template<typename T>
-	void fill_file(stats func(vector<T>&), string path, int count, int sort_type) {
+	void fill_file(stats func(vector<T>&), string path, int count, int sort_type, int seed) {
 		fstream file;
 		file.open(path, std::ios::app);
 		vector<int> vals = { 1,2,3,4,5,6,7,8,9,10,25,50,100 };
 		if (file) {
 			for (int i = 0; i < vals.size(); i++) {
 				/*cout << vals[i] * 1000 << endl;*/
-				vector<stats> res = test_sort(func, vals[i] * 1000, count, sort_type);
+				vector<stats> res = test_sort(func, vals[i] * 1000, count, sort_type, seed);
 				file << vals[i] * 1000 << " ";
 				file << average(res);
 			}
@@ -104,10 +104,11 @@ namespace algorithm {
 	}
 
 	template<typename T>
-	vector<stats> test_sort(stats func(vector<T>&), int limit, int count, int mass_type) {
+	vector<stats> test_sort(stats func(vector<T>&), int limit, int count, int mass_type, int seed) {
 		/// test_sort(sort_function: *func(type of sort funtion), limit: int(mass_len), count: int(mass_count),
 		//sorted_type(0 - sort; 1 - unsorted; 2 - random_shuffle): int) -> vector<stats>
 		vector<stats> results;
+		int seed_helper = 0;
 		for (int i = 0; i <= count - 1; i++) {
 			vector<int> mass;
 			switch (mass_type)
@@ -124,11 +125,13 @@ namespace algorithm {
 				break;
 			case 2:
 				for (int j = 0; j < limit; j++) {
-					mass.push_back(generate_random_number(1, 100));
+					mass.push_back(generate_random_number(1, 100, seed+seed_helper));
+					seed_helper++;
 				}
 				break;
 			}
-			cout << mass.size()<<endl;
+
+			cout << mass<<endl;
 			results.push_back(func(mass));
 		}
 		return results;
